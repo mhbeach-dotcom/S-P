@@ -249,7 +249,9 @@ def readings_page():
         for i, r in enumerate(data['readings']):
             src = f' <span class="s">{esc(r["src"])}</span>' if r['src'] else ''
             note = f'<div class="n">{esc(r["note"])}</div>' if r['note'] else ''
-            items += f'<li>{esc(r["cite"])}{src}{note}</li>'
+            link = meta.get('links', {}).get(f'{c}.{i+1}')
+            cite = f'<a href="{esc(link)}" target="_blank" rel="noopener">{esc(r["cite"])}</a>' if link else esc(r['cite'])
+            items += f'<li>{cite}{src}{note}</li>'
         body += (f'<section id="case-{c}"><h2>{esc(code(c))}: {esc(fix_title(SHORT[c]))}{dates}</h2>'
                  f'<ol>{items}</ol></section>')
     toc = ''.join(f'<a href="#case-{c}">{esc(code(c))}</a>' for c in ORDER if cases_raw.get(c, {}).get('readings'))

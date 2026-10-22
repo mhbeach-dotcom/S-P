@@ -89,7 +89,7 @@ def case_card(c):
         body += sub('Overview', 'eye', head)
         body += sub('Lectures', 'mic', lec_list(c)) 
         qs = ''.join(f'<li>{esc(q)}</li>' for q in data['questions'])
-        body += sub(f'Essay &amp; Discussion Questions ({len(data["questions"])})', 'q', f'<ul class="plain-list q-list">{qs}</ul>', 'span-all')
+        body += sub(f'Essay &amp; Discussion Questions ({len(data["questions"])})', 'q', f'<ol class="plain-list q-list">{qs}</ol>', 'span-all')
         rds = ''
         for i, r in enumerate(data['readings']):
             link = meta.get('links', {}).get(f'{c}.{i+1}')
@@ -235,3 +235,37 @@ page = (shell.replace('{{CSS}}', css).replace('{{JS}}', js).replace('{{CASE_INDE
         .replace('{{TOTAL_CASES}}', str(len(ORDER))))
 (ROOT / 'index.html').write_text(page, encoding='utf-8')
 print('wrote index.html', len(page) // 1024, 'KB')
+
+
+# ---- readings.html: required reading by case ----
+def readings_page():
+    body = ''
+    for c in ORDER:
+        data = cases_raw.get(c)
+        if not data or not data.get('readings'): continue
+        cd = case_days[c]
+        dates = f' <span class="d">{rng(cd[0], cd[-1])}</span>' if cd else ''
+        items = ''
+        for i, r in enumerate(data['readings']):
+            src = f' <span class="s">{esc(r["src"])}</span>' if r['src'] else ''
+            note = f'<div class="n">{esc(r["note"])}</div>' if r['note'] else ''
+            items += f'<li>{esc(r["cite"])}{src}{note}</li>'
+        body += (f'<section id="case-{c}"><h2>{esc(code(c))}: {esc(fix_title(SHORT[c]))}{dates}</h2>'
+                 f'<ol>{items}</ol></section>')
+    toc = ''.join(f'<a href="#case-{c}">{esc(code(c))}</a>' for c in ORDER if cases_raw.get(c, {}).get('readings'))
+    css = ("body{font:16px/1.55 system-ui,sans-serif;max-width:60rem;margin:0 auto;padding:16px;color:#1b2333;background:#fff}"
+           "h1{font-size:1.5rem;margin:0 0 4px}.sub{color:#5b6475;font-size:.85rem;margin:0 0 12px}"
+           "nav{display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:20px;font-size:.9rem}"
+           "section{margin-bottom:28px}h2{font-size:1.1rem;border-bottom:2px solid #b8923a;padding-bottom:4px}"
+           ".d{font-weight:400;font-size:.8rem;color:#5b6475;white-space:nowrap}"
+           "li{margin-bottom:10px}.s{font-size:.7rem;border:1px solid #b8923a;border-radius:3px;padding:0 4px;color:#7a5c14}"
+           ".n{font-size:.82rem;color:#5b6475;margin-top:2px}a{color:#1d4f91}"
+           "@media(prefers-color-scheme:dark){body{background:#141922;color:#e4e8ef}.sub,.n,.d{color:#9aa5b8}a{color:#7fb0f0}.s{color:#e0b85a}}"
+           "@media print{.n{display:none}nav{display:none}}")
+    return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>S&amp;P Required Reading by Case</title><style>{css}</style></head><body>'
+            f'<h1>Strategy &amp; Policy &mdash; Required Reading by Case</h1>'
+            f'<p class="sub">Winter 2026&ndash;27. From the S&amp;P Syllabus (approved 21 Sep 2026); the syllabus and Blackboard are authoritative. <a href="index.html">Course page</a></p>'
+            f'<nav>{toc}</nav>{body}</body></html>')
+(ROOT / 'readings.html').write_text(readings_page(), encoding='utf-8')
+print('wrote readings.html')

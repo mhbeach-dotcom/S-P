@@ -463,6 +463,9 @@
     font-size: 0.9rem;
     line-height: 1.55;
   }
+  ol.plain-list { margin: 0 0 8px; padding-left: 24px; font-size: 0.9rem; line-height: 1.55; }
+  ol.plain-list li { margin-bottom: 5px; }
+  ol.q-list li::marker { color: #9aa5b8; font-weight: 600; }
   ul.plain-list:last-child { margin-bottom: 0; }
   ul.plain-list li { margin-bottom: 5px; }
   ul.plain-list li::marker { color: var(--gold); }

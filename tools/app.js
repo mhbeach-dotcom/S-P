@@ -103,7 +103,7 @@
   // and their "Open case" buttons; hide days/months left empty.
   function filterCalendarNoise(terms) {
     document.querySelectorAll('.cal-day-items > *').forEach(function(item) {
-      if (item.classList.contains('session-card') || item.classList.contains('cal-item-casehdr')) return;
+      
       item.style.display = terms.length ? 'none' : '';
     });
     var header = null, has = new Map();
@@ -130,9 +130,7 @@
         if (terms.length) { e.card.open = true; highlightTerms(e.card, terms); }
       }
     });
-    document.querySelectorAll('.cal-item-casehdr').forEach(function(item) {
-      item.style.display = (!terms.length || visible[item.dataset.code]) ? '' : 'none';
-    });
+    document.querySelectorAll('.between-cases').forEach(function(el) { el.style.display = terms.length ? 'none' : ''; });
     filterCalendarNoise(terms);
     document.getElementById('searchClearBtn').style.display = q ? 'flex' : 'none';
     document.getElementById('noResults').style.display = (terms.length && !count) ? 'block' : 'none';

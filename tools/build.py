@@ -56,13 +56,22 @@ def sub(title, icon, body, cls=''):
 
 def rid(*a): return hashlib.sha1('|'.join(a).encode()).hexdigest()[:8]
 
+def dlist(ds):
+    # ['2026-11-13','2026-11-16'] -> 'Nov 13, 16'; months repeat only when they change
+    out, last = [], None
+    for d in ds:
+        dt = d2(d)
+        out.append((dt.strftime('%b ') if dt.month != last else '') + str(dt.day))
+        last = dt.month
+    return ', '.join(out)
+
 def case_card(c):
     m = meta['cases'][c]
     cdays = case_days[c]
-    span = rng(cdays[0], cdays[-1]) if cdays else ''
-    lects = LECT[c]
-    nsem = len(sem_days[c])
-    metaline = f'{span} &middot; {len(lects)} lecture{"s" if len(lects) != 1 else ""}'
+    lec_dates = sorted({l['date'] for l in LECT[c] if l['date']})
+    metaline = 'Lecture' + ('s ' if len(lec_dates) != 1 else ' ') + dlist(lec_dates)
+    if any(not l['date'] for l in LECT[c]): metaline += ' + asynch'
+    if sem_days[c]: metaline += ' &middot; Seminars ' + dlist(sem_days[c])
     if c == '0':
         body = ''
         body += sub('Course Introduction', 'eye', ''.join(f'<p>{esc(p)}</p>' for p in meta['intro_paras']))
@@ -172,26 +181,25 @@ def calendar_html():
     lec_iter = make_iters()
     out = []
     month = None
-    placed = set()
+    # case banners span the run of days from a case's first to last dated item
+    last_day = {c: case_days[c][-1] for c in ORDER}
+    open_case = None
+    between = False
     for d, items in DAYS.items():
         dt = d2(d)
         if (dt.year, dt.month) != month:
             month = (dt.year, dt.month)
             out.append(f'<h3 class="cal-month-header" id="month-{dt:%Y-%m}">{dt:%B %Y}</h3>')
-        cs = []
-        for it in items:
-            if it.get('case') and it['case'] not in cs: cs.append(it['case'])
-        pills = ''.join(f'<span class="case-pill">{code(c)}</span>' for c in cs)
-        parts = []
+        cs = [c for c in ORDER if any(i.get('case') == c for i in items)]
+        if open_case and d > last_day[open_case]: open_case = None
         for c in cs:
-            if c not in placed:
-                placed.add(c); parts.append(case_card(c))
-            else:
-                parts.append(f'<button type="button" class="cal-item cal-item-casehdr cal-item-continuation" data-jump-session="{c}" data-code="{c}">'
-                             f'<span class="cal-item-main">{code(c)} &middot; {esc(meta["cases"][c]["short_title"])}</span><span class="cal-item-go">Open case &rsaquo;</span></button>')
-        for it in items: parts.append(item_html(d, it, lec_iter))
+            if first_day[c] == d:
+                out.append(case_card(c)); open_case = c; between = False
+        if not open_case and not between:
+            out.append('<div class="between-cases">Between cases</div>'); between = True
+        parts = [item_html(d, it, lec_iter) for it in items]
         out.append(f'<div class="cal-day" id="day-{d}"><div class="cal-day-date"><span class="cal-dow">{dt:%A}</span>'
-                   f'<span class="cal-dnum">{dt:%b} {dt.day}</span>{pills}</div><div class="cal-day-items">{"".join(parts)}</div></div>')
+                   f'<span class="cal-dnum">{dt:%b} {dt.day}</span></div><div class="cal-day-items">{"".join(parts)}</div></div>')
     return '<div class="cal-agenda" id="calAgenda">' + ''.join(out) + '</div>'
 
 def case_index_html():

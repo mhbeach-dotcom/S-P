@@ -57,3 +57,9 @@
   .ref-panel .ref-body h5 { margin: 12px 0 4px; font-size: 0.9rem; color: var(--navy-text); }
   .ref-links a { color: var(--link); }
   .page-footer a { color: var(--link); }
+
+  /* case banner = the case card, placed between day rows */
+  #calAgenda > .session-card { margin: 22px 0 6px; border-left: 4px solid var(--gold); }
+  #calAgenda > .session-card > summary { background: linear-gradient(90deg, rgba(201,162,39,0.14), transparent 60%); }
+  #calAgenda > .session-card .card-meta-line { font-size: 0.78rem; }
+  .between-cases { margin: 22px 0 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 8px; }

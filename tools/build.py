@@ -222,7 +222,7 @@ def reference_html():
     for t in themes:
         th += (f'<details class="ref-panel"><summary>{t["n"]}. {esc(fix_title(t["title"]))}</summary><div class="ref-body">'
                + ''.join(f'<p>{esc(p)}</p>' for p in t['paras']) + '</div></details>')
-    out += f'<details class="ref-panel" open><summary>The 11 course themes (guiding questions)</summary><div class="ref-body">{th}</div></details>'
+    out += f'<details class="ref-panel"><summary>The 11 course themes (guiding questions)</summary><div class="ref-body">{th}</div></details>'
     out += f'<details class="ref-panel"><summary>Source files (Google Drive)</summary><div class="ref-body ref-links">{meta["links_html"]}</div></details>'
     return out + '</section>'
 

@@ -1,0 +1,1052 @@
+{
+ "short": {
+  "0": "Introduction",
+  "I": "Theories of War",
+  "II": "Peloponnesian War",
+  "III": "FrRev & Napoleon",
+  "IV": "Rise of Germany & WWI",
+  "V": "Interwar",
+  "VI": "WWII",
+  "VII": "Early Cold War",
+  "VIII": "Middle Cold War",
+  "IX": "Late Cold War",
+  "X": "GWOT",
+  "XI": "Global Challenges"
+ },
+ "lectures": {
+  "0": [
+   {
+    "date": "2026-11-09",
+    "presenter": "Prof Ulrich",
+    "title": "Strategy and Policy: Concept and Course"
+   }
+  ],
+  "I": [
+   {
+    "date": "2026-11-13",
+    "presenter": "Prof Hoyt",
+    "title": "Strategies in War and Great Power Competition"
+   },
+   {
+    "date": "2026-11-13",
+    "presenter": "Prof Bellinger",
+    "title": "Clausewitz’s On War"
+   },
+   {
+    "date": "2026-11-16",
+    "presenter": "Prof Wilson",
+    "title": "Sun Tzu and the Art of War"
+   },
+   {
+    "date": "2026-11-16",
+    "presenter": "Prof Holmes",
+    "title": "Mahan and Sea Power"
+   }
+  ],
+  "II": [
+   {
+    "date": "2026-11-20",
+    "presenter": "CDR Hammond",
+    "title": "Rise of Athens"
+   },
+   {
+    "date": "2026-11-20",
+    "presenter": "Prof Maurer",
+    "title": "The Peace of Nicias and Sicily"
+   },
+   {
+    "date": "2026-11-24",
+    "presenter": "Prof Pavković",
+    "title": "The Fall of Athens"
+   },
+   {
+    "date": "2026-11-24",
+    "presenter": "Prof Ulrich",
+    "title": "International Relations Theory and Strategy"
+   }
+  ],
+  "III": [
+   {
+    "date": "2026-12-08",
+    "presenter": "Prof Satterfield",
+    "title": "The French Revolution: Military Revolutions and Great Power Competition"
+   },
+   {
+    "date": "2026-12-08",
+    "presenter": "Prof Pavković",
+    "title": "Napoleon’s Aims and Way of War"
+   },
+   {
+    "date": "2026-12-08",
+    "presenter": "Prof Meeks",
+    "title": "Coalitions and the Downfall of Napoleon"
+   },
+   {
+    "date": "2026-12-09",
+    "presenter": "Prof McCranie",
+    "title": "Corbett & Naval Strategy"
+   }
+  ],
+  "IV": [
+   {
+    "date": "2026-12-15",
+    "presenter": "Prof Maurer",
+    "title": "Bismarck and the Unification of Germany"
+   },
+   {
+    "date": "2026-12-15",
+    "presenter": "Prof Tumblin",
+    "title": "The British Empire and the Road to War"
+   },
+   {
+    "date": "2026-12-16",
+    "presenter": "Prof Bellinger",
+    "title": "Germany Strategy in the First World War"
+   },
+   {
+    "date": "2026-12-16",
+    "presenter": "Prof McCranie",
+    "title": "The War at Sea, 1914-1918"
+   }
+  ],
+  "V": [
+   {
+    "date": "2027-01-05",
+    "presenter": "Prof Tumblin",
+    "title": "Britain’s Grand Strategy"
+   },
+   {
+    "date": "2027-01-05",
+    "presenter": "Prof Klass",
+    "title": "The Unraveling of Asia"
+   },
+   {
+    "date": "2027-01-05",
+    "presenter": "Prof Satterfield",
+    "title": "Military Transformation in the Interwar Period"
+   },
+   {
+    "date": null,
+    "presenter": "Prof Toprani",
+    "title": "The Great Depression and its Consequences"
+   }
+  ],
+  "VI": [
+   {
+    "date": "2027-01-12",
+    "presenter": "Prof Berenji",
+    "title": "The Axis Powers"
+   },
+   {
+    "date": "2027-01-12",
+    "presenter": "Prof Stone",
+    "title": "Stalin and Soviet Grand Strategy"
+   },
+   {
+    "date": "2027-01-13",
+    "presenter": "Prof Maurer",
+    "title": "FDR and US Grand Strategy"
+   },
+   {
+    "date": "2027-01-13",
+    "presenter": "Prof McCranie",
+    "title": "Struggle for Sea Power and Naval Mastery"
+   }
+  ],
+  "VII": [
+   {
+    "date": "2027-01-19",
+    "presenter": "Prof Post",
+    "title": "Evolution of US Nuclear Strategy"
+   },
+   {
+    "date": "2027-01-21",
+    "presenter": "Prof Dennis",
+    "title": "US Post-War Strategy"
+   },
+   {
+    "date": "2027-01-21",
+    "presenter": "Prof Klass",
+    "title": "Communist Post-War Grand Strategy"
+   },
+   {
+    "date": "2027-01-21",
+    "presenter": "Prof Sarantakes",
+    "title": "NSC-68 and the Korean War"
+   }
+  ],
+  "VIII": [
+   {
+    "date": "2027-01-28",
+    "presenter": "Prof Wilson",
+    "title": "Mao’s Theory in the Guerilla Warfare"
+   },
+   {
+    "date": "2027-01-28",
+    "presenter": "Prof Paranzino",
+    "title": "The Cold War in the Third World"
+   },
+   {
+    "date": "2027-01-29",
+    "presenter": "Prof Ulrich",
+    "title": "Civil-Military Relations Theory"
+   },
+   {
+    "date": "2027-01-29",
+    "presenter": "Prof Genest",
+    "title": "US Strategy in Vietnam"
+   }
+  ],
+  "IX": [
+   {
+    "date": "2027-02-04",
+    "presenter": "Prof Genest",
+    "title": "Rise and Fall of Détente"
+   },
+   {
+    "date": "2027-02-04",
+    "presenter": "Prof Stone",
+    "title": "Soviet Strategy and the Fall of the Soviet Empire"
+   },
+   {
+    "date": "2027-02-05",
+    "presenter": "Prof Dennis",
+    "title": "End of the Cold War"
+   },
+   {
+    "date": "2027-02-05",
+    "presenter": "Prof Hoyt",
+    "title": "The Unipolar Moment"
+   }
+  ],
+  "X": [
+   {
+    "date": "2027-02-10",
+    "presenter": "Prof Lane",
+    "title": "Overview of the Global War on Terrorism"
+   },
+   {
+    "date": "2027-02-10",
+    "presenter": "Prof Genest",
+    "title": "Afghanistan: Retrospect and Prospect"
+   },
+   {
+    "date": "2027-02-11",
+    "presenter": "Prof Romaneski",
+    "title": "The War in Iraq"
+   },
+   {
+    "date": "2027-02-11",
+    "presenter": "Prof Berenji",
+    "title": "Strategic Repercussions of the Global War on Terrorism"
+   }
+  ],
+  "XI": [
+   {
+    "date": "2027-02-18",
+    "presenter": "Prof Stone",
+    "title": "Russia and the World Order"
+   },
+   {
+    "date": "2027-02-18",
+    "presenter": "Prof Wilson",
+    "title": "Chinese Power and Purpose in the World"
+   },
+   {
+    "date": "2027-02-19",
+    "presenter": "Prof Holmes",
+    "title": "Sea Power in the World"
+   },
+   {
+    "date": "2027-02-19",
+    "presenter": "Prof Hoyt",
+    "title": "Strategy in the 21st Century"
+   }
+  ]
+ },
+ "days": {
+  "2026-11-09": [
+   {
+    "k": "lec",
+    "case": "0",
+    "time": "0830-0930",
+    "room": "Spruance",
+    "intro": true
+   },
+   {
+    "k": "sem",
+    "case": "0",
+    "time": "0945-1045",
+    "par": "Even",
+    "label": null
+   },
+   {
+    "k": "sem",
+    "case": "0",
+    "time": "1100-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2026-11-10": [
+   {
+    "k": "holiday",
+    "text": "Veterans’ Day Liberty"
+   }
+  ],
+  "2026-11-11": [
+   {
+    "k": "holiday",
+    "text": "Veterans’ Day"
+   }
+  ],
+  "2026-11-12": [
+   {
+    "k": "holiday",
+    "text": "Veterans’ Day Liberty"
+   }
+  ],
+  "2026-11-13": [
+   {
+    "k": "note",
+    "text": "Graduation (Spruance Auditorium)"
+   },
+   {
+    "k": "lec",
+    "case": "I",
+    "time": "0830-0945",
+    "room": "Pringle"
+   },
+   {
+    "k": "lec",
+    "case": "I",
+    "time": "1000-1115",
+    "room": "Pringle"
+   }
+  ],
+  "2026-11-16": [
+   {
+    "k": "lec",
+    "case": "I",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "I",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2026-11-17": [
+   {
+    "k": "sem",
+    "case": "I",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2026-11-18": [
+   {
+    "k": "pmw"
+   }
+  ],
+  "2026-11-19": [
+   {
+    "k": "sem",
+    "case": "I",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2026-11-20": [
+   {
+    "k": "lec",
+    "case": "II",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "II",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2026-11-23": [
+   {
+    "k": "elective",
+    "n": 1
+   }
+  ],
+  "2026-11-24": [
+   {
+    "k": "lec",
+    "case": "II",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "II",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2026-11-25": [
+   {
+    "k": "holiday",
+    "text": "Thanksgiving Recess"
+   }
+  ],
+  "2026-11-26": [
+   {
+    "k": "holiday",
+    "text": "Thanksgiving Recess"
+   }
+  ],
+  "2026-11-27": [
+   {
+    "k": "holiday",
+    "text": "Thanksgiving Recess"
+   }
+  ],
+  "2026-11-30": [
+   {
+    "k": "elective",
+    "n": 2
+   }
+  ],
+  "2026-12-01": [
+   {
+    "k": "sem",
+    "case": "II",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2026-12-02": [
+   {
+    "k": "sem",
+    "case": "II",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2026-12-03": [
+   {
+    "k": "pmw"
+   }
+  ],
+  "2026-12-04": [
+   {
+    "k": "pmw"
+   }
+  ],
+  "2026-12-07": [
+   {
+    "k": "elective",
+    "n": 3
+   }
+  ],
+  "2026-12-08": [
+   {
+    "k": "lec",
+    "case": "III",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "III",
+    "time": "1000-1115",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "III",
+    "time": "1130-1245",
+    "room": "Spruance"
+   }
+  ],
+  "2026-12-09": [
+   {
+    "k": "lec",
+    "case": "III",
+    "time": "0830-0930",
+    "room": "Spruance"
+   },
+   {
+    "k": "sem",
+    "case": "III",
+    "time": "0945-1045",
+    "par": "Even",
+    "label": "Breakouts"
+   },
+   {
+    "k": "sem",
+    "case": "III",
+    "time": "1100-1200",
+    "par": "Odd",
+    "label": "Breakouts"
+   }
+  ],
+  "2026-12-10": [
+   {
+    "k": "sem",
+    "case": "III",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2026-12-11": [
+   {
+    "k": "sem",
+    "case": "III",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2026-12-14": [
+   {
+    "k": "elective",
+    "n": 4
+   },
+   {
+    "k": "note",
+    "text": "NCC FSP: 6–12 December (Houston/Nashville)"
+   }
+  ],
+  "2026-12-15": [
+   {
+    "k": "lec",
+    "case": "IV",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "IV",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2026-12-16": [
+   {
+    "k": "lec",
+    "case": "IV",
+    "time": "0830-0945",
+    "room": "Pringle"
+   },
+   {
+    "k": "lec",
+    "case": "IV",
+    "time": "1000-1115",
+    "room": "Pringle"
+   }
+  ],
+  "2026-12-17": [
+   {
+    "k": "sem",
+    "case": "IV",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2026-12-18": [
+   {
+    "k": "sem",
+    "case": "IV",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2026-12-21": [
+   {
+    "k": "elective",
+    "n": 5
+   }
+  ],
+  "2026-12-22": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-23": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-24": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-25": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-28": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-29": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-30": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2026-12-31": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2027-01-01": [
+   {
+    "k": "holiday",
+    "text": "Holiday Recess"
+   }
+  ],
+  "2027-01-04": [
+   {
+    "k": "elective",
+    "n": 6
+   }
+  ],
+  "2027-01-05": [
+   {
+    "k": "lec",
+    "case": "V",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "V",
+    "time": "1000-1115",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "V",
+    "time": "1130-1245",
+    "room": "Spruance"
+   },
+   {
+    "k": "note",
+    "text": "Asynchronous lecture for Case V: “The Great Depression and its Consequences” (Prof Toprani)"
+   }
+  ],
+  "2027-01-06": [
+   {
+    "k": "pmw"
+   }
+  ],
+  "2027-01-07": [
+   {
+    "k": "sem",
+    "case": "V",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2027-01-08": [
+   {
+    "k": "sem",
+    "case": "V",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-01-11": [
+   {
+    "k": "elective",
+    "n": 7
+   }
+  ],
+  "2027-01-12": [
+   {
+    "k": "lec",
+    "case": "VI",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "VI",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-01-13": [
+   {
+    "k": "lec",
+    "case": "VI",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "VI",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-01-14": [
+   {
+    "k": "sem",
+    "case": "VI",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2027-01-15": [
+   {
+    "k": "sem",
+    "case": "VI",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-01-18": [
+   {
+    "k": "holiday",
+    "text": "MLK Holiday"
+   }
+  ],
+  "2027-01-19": [
+   {
+    "k": "lec",
+    "case": "VII",
+    "time": "0830-0930",
+    "room": "Spruance"
+   },
+   {
+    "k": "sem",
+    "case": "VII",
+    "time": "0945-1045",
+    "par": "Even",
+    "label": "Breakouts"
+   },
+   {
+    "k": "sem",
+    "case": "VII",
+    "time": "1100-1200",
+    "par": "Odd",
+    "label": "Breakouts"
+   }
+  ],
+  "2027-01-20": [
+   {
+    "k": "elective",
+    "n": 8
+   }
+  ],
+  "2027-01-21": [
+   {
+    "k": "lec",
+    "case": "VII",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "VII",
+    "time": "1000-1115",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "VII",
+    "time": "1130-1245",
+    "room": "Spruance"
+   }
+  ],
+  "2027-01-22": [
+   {
+    "k": "reflect"
+   }
+  ],
+  "2027-01-25": [
+   {
+    "k": "elective",
+    "n": 9
+   }
+  ],
+  "2027-01-26": [
+   {
+    "k": "sem",
+    "case": "VII",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2027-01-27": [
+   {
+    "k": "sem",
+    "case": "VII",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-01-28": [
+   {
+    "k": "lec",
+    "case": "VIII",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "VIII",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-01-29": [
+   {
+    "k": "lec",
+    "case": "VIII",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "VIII",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-02-01": [
+   {
+    "k": "elective",
+    "n": 10
+   },
+   {
+    "k": "note",
+    "text": "NCC FSP: 31 January–6 February (Charleston/Atlanta)"
+   }
+  ],
+  "2027-02-02": [
+   {
+    "k": "sem",
+    "case": "VIII",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2027-02-03": [
+   {
+    "k": "sem",
+    "case": "VIII",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-02-04": [
+   {
+    "k": "lec",
+    "case": "IX",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "IX",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-02-05": [
+   {
+    "k": "lec",
+    "case": "IX",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "IX",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-02-08": [
+   {
+    "k": "sem",
+    "case": "IX",
+    "time": "0830-1130",
+    "par": "Even",
+    "label": null
+   },
+   {
+    "k": "event",
+    "text": "FO/GO Address with ADM Wikoff (students mandatory)",
+    "time": "1200-1315"
+   }
+  ],
+  "2027-02-09": [
+   {
+    "k": "sem",
+    "case": "IX",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-02-10": [
+   {
+    "k": "lec",
+    "case": "X",
+    "time": "0830-0945",
+    "room": "Pringle"
+   },
+   {
+    "k": "lec",
+    "case": "X",
+    "time": "1000-1115",
+    "room": "Pringle"
+   }
+  ],
+  "2027-02-11": [
+   {
+    "k": "lec",
+    "case": "X",
+    "time": "0830-0945",
+    "room": "Pringle"
+   },
+   {
+    "k": "lec",
+    "case": "X",
+    "time": "1000-1115",
+    "room": "Pringle"
+   }
+  ],
+  "2027-02-12": [
+   {
+    "k": "sem",
+    "case": "X",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2027-02-15": [
+   {
+    "k": "holiday",
+    "text": "Presidents’ Day"
+   }
+  ],
+  "2027-02-16": [
+   {
+    "k": "sem",
+    "case": "X",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-02-17": [
+   {
+    "k": "pmw"
+   }
+  ],
+  "2027-02-18": [
+   {
+    "k": "lec",
+    "case": "XI",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "XI",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-02-19": [
+   {
+    "k": "lec",
+    "case": "XI",
+    "time": "0830-0945",
+    "room": "Spruance"
+   },
+   {
+    "k": "lec",
+    "case": "XI",
+    "time": "1000-1115",
+    "room": "Spruance"
+   }
+  ],
+  "2027-02-22": [
+   {
+    "k": "sem",
+    "case": "XI",
+    "time": "0830-1200",
+    "par": "Even",
+    "label": null
+   }
+  ],
+  "2027-02-23": [
+   {
+    "k": "sem",
+    "case": "XI",
+    "time": "0830-1200",
+    "par": "Odd",
+    "label": null
+   }
+  ],
+  "2027-02-24": [
+   {
+    "k": "reflect"
+   }
+  ],
+  "2027-02-25": [
+   {
+    "k": "deadline",
+    "text": "Comprehensive Essay distributed",
+    "time": "0830",
+    "due": "2027-02-25T08:30:00"
+   }
+  ],
+  "2027-02-26": [
+   {
+    "k": "deadline",
+    "text": "Comprehensive Essay returned — Strategy & Policy ends",
+    "time": "0830",
+    "due": "2027-02-26T08:30:00"
+   }
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+# Strategy & Policy — Winter 2026–27 course page
+
+Personal study aid for the Naval War College Strategy & Policy course, modeled on the JMO course page.
+`index.html` is a single self-contained file (open it in a browser; no server needed).
+
+- **Calendar first:** every day Nov 9 2026 – Feb 26 2027, with lectures (presenter/title/room), Even/Odd seminars, electives, holidays and the Comprehensive Essay dates.
+- **11 case-study cards** (plus the Introduction) attached to each case's first day and linked from every later day: overview, lectures, essay/discussion questions, readings with read-checkboxes (saved in your browser).
+- Search, dark mode, "My seminar" Even/Odd filter, Today/Next-up banner, course themes and grading reference.
+
+## Rebuilding
+`index.html` is generated — edit the data, then run:
+
+```
+python3 tools/build.py
+```
+
+| File | Purpose |
+| --- | --- |
+| `data/schedule.json` | Calendar days, lecture list (dates/presenters/titles) |
+| `data/cases_raw.json` | Per-case overview, questions, readings (extracted from the syllabus PDF) |
+| `data/themes.json`, `data/meta.json` | Course themes, learning outcomes, grading summary, links |
+| `tools/shell.html`, `tools/app.js`, `tools/jmo_base.css`, `tools/extra.css` | Page shell, behavior, styling |
+
+Sources: S&P Syllabus (approved 21 Sep 2026), S&P Course Calendar (updated 8 Oct 2026), SLC Lecture Schedule (updated 21 Sep 2026). The official syllabus and Blackboard are authoritative.

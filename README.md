@@ -9,11 +9,13 @@ Personal study aid for the Naval War College Strategy & Policy course, modeled o
 - Search, dark mode, "My seminar" Even/Odd filter, Today/Next-up banner, course themes and grading reference.
 
 ## Rebuilding
-`index.html` is generated — edit the data, then run:
+`index.html` and `readings.html` are generated and password-protected (StatiCrypt, AES-256). Edit the data, then run:
 
 ```
-python3 tools/build.py
+tools/publish.sh
 ```
+
+This runs `tools/build.py` and encrypts the output in place. The committed files are encrypted; there is no plaintext copy in the repo. `python3 tools/build.py` alone writes plaintext pages — don't commit those.
 
 | File | Purpose |
 | --- | --- |

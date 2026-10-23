@@ -127,7 +127,11 @@
       e.card.style.display = match ? '' : 'none';
       if (match) {
         count++; visible[e.code] = true;
-        if (terms.length) { e.card.open = true; highlightTerms(e.card, terms); }
+        if (terms.length) {
+          e.card.open = true;
+          e.card.querySelectorAll('.q-collapse').forEach(function(q) { if (terms.some(function(t) { return q.textContent.toLowerCase().indexOf(t) !== -1; })) q.open = true; });
+          highlightTerms(e.card, terms);
+        }
       }
     });
     document.querySelectorAll('.between-cases').forEach(function(el) { el.style.display = terms.length ? 'none' : ''; });
@@ -139,8 +143,8 @@
     if (terms.length && count) { status.textContent = count + ' of ' + searchIndex.length + ' cases match'; status.style.display = 'block'; }
     else status.style.display = 'none';
   }
-  function expandAll() { document.querySelectorAll('.session-card').forEach(function(c) { c.open = true; }); }
-  function collapseAll() { document.querySelectorAll('.session-card').forEach(function(c) { c.open = false; }); }
+  function expandAll() { document.querySelectorAll('.session-card, .q-collapse').forEach(function(c) { c.open = true; }); }
+  function collapseAll() { document.querySelectorAll('.session-card, .q-collapse').forEach(function(c) { c.open = false; }); }
 
   // ---------------- navigation ----------------
   function flash(el) {

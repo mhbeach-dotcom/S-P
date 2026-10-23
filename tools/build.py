@@ -50,7 +50,10 @@ SVG = {
  'mic': '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
  'cal': '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
 }
-def sub(title, icon, body, cls=''):
+def sub(title, icon, body, cls='', collapsible=False):
+    if collapsible:
+        return (f'<details class="subsection q-collapse {cls}"><summary><span class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{SVG[icon]}</svg></span>{title}</summary>{body}</details>')
     return (f'<div class="subsection {cls}"><h4><span class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{SVG[icon]}</svg></span>{title}</h4>{body}</div>')
 
@@ -89,7 +92,7 @@ def case_card(c):
         body += sub('Overview', 'eye', head)
         body += sub('Lectures', 'mic', lec_list(c)) 
         qs = ''.join(f'<li>{esc(q)}</li>' for q in data['questions'])
-        body += sub(f'Essay &amp; Discussion Questions ({len(data["questions"])})', 'q', f'<ol class="plain-list q-list">{qs}</ol>', 'span-all')
+        body += sub(f'Essay &amp; Discussion Questions ({len(data["questions"])})', 'q', f'<ol class="plain-list q-list">{qs}</ol>', 'span-all', collapsible=True)
         rds = ''
         for i, r in enumerate(data['readings']):
             link = meta.get('links', {}).get(f'{c}.{i+1}')

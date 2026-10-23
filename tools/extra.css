@@ -108,3 +108,19 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
+
+  /* collapsible Essay & Discussion Questions */
+  .q-collapse > summary {
+    display: flex; align-items: center; gap: 7px; min-height: 44px; margin: 0; cursor: pointer; list-style: none;
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--navy-text);
+  }
+  .session-card .q-collapse > summary { padding: 0; flex-wrap: nowrap; gap: 7px; }
+  .session-card .q-collapse > summary::before { content: none; }
+  .q-collapse > summary::-webkit-details-marker { display: none; }
+  .q-collapse > summary::after {
+    content: "\203A"; margin-left: auto; padding: 0 6px; font-size: 1.2rem; line-height: 1; color: var(--gold);
+    transform: rotate(90deg); transition: transform 0.18s;
+  }
+  .q-collapse[open] > summary::after { transform: rotate(-90deg); }
+  .q-collapse[open] > summary { margin-bottom: 4px; }
+  @media print { .q-collapse > *:not(summary) { display: block !important; } }

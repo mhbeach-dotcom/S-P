@@ -198,7 +198,7 @@ def calendar_html():
         if not open_case and not between:
             out.append('<div class="between-cases">Between cases</div>'); between = True
         parts = [item_html(d, it, lec_iter) for it in items]
-        out.append(f'<div class="cal-day" id="day-{d}"><div class="cal-day-date"><span class="cal-dow">{dt:%A}</span>'
+        out.append(f'<div class="cal-day{" cal-weekend" if dt.weekday() >= 5 else ""}" id="day-{d}"><div class="cal-day-date"><span class="cal-dow">{dt:%A}</span>'
                    f'<span class="cal-dnum">{dt:%b} {dt.day}</span></div><div class="cal-day-items">{"".join(parts)}</div></div>')
     return '<div class="cal-agenda" id="calAgenda">' + ''.join(out) + '</div>'
 

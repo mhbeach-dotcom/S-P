@@ -133,6 +133,7 @@
     document.querySelectorAll('.between-cases').forEach(function(el) { el.style.display = terms.length ? 'none' : ''; });
     filterCalendarNoise(terms);
     document.getElementById('searchClearBtn').style.display = q ? 'flex' : 'none';
+    updateNavState();
     document.getElementById('noResults').style.display = (terms.length && !count) ? 'block' : 'none';
     var status = document.getElementById('searchStatus');
     if (terms.length && count) { status.textContent = count + ' of ' + searchIndex.length + ' cases match'; status.style.display = 'block'; }
@@ -163,6 +164,7 @@
   function jumpToToday() {
     closeDrawer();
     var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    if (!AGENDA_DATES.length) return;
     var best = AGENDA_DATES[0], min = Infinity;
     AGENDA_DATES.forEach(function(ds) {
       var p = ds.split('-').map(Number);
@@ -273,15 +275,80 @@
   }
 
   // ---------------- drawer ----------------
+  var drawerOpener = null;
+  function drawerFocusables() {
+    return Array.prototype.filter.call(document.querySelectorAll('.sidebar button, .sidebar input, .sidebar select, .sidebar a[href]'),
+      function(el) { return !el.disabled && el.offsetParent !== null; });
+  }
   function openDrawer() {
-    document.querySelector('.sidebar').classList.add('open');
+    var sb = document.querySelector('.sidebar');
+    if (sb.classList.contains('open')) return;
+    drawerOpener = document.activeElement;
+    sb.classList.add('open');
     document.getElementById('drawerBackdrop').classList.add('open');
     document.body.style.overflow = 'hidden';
+    var f = drawerFocusables()[0];
+    if (f && window.innerWidth < 1100) setTimeout(function() { f.focus(); }, 50);
   }
   function closeDrawer() {
-    document.querySelector('.sidebar').classList.remove('open');
+    var sb = document.querySelector('.sidebar');
+    var wasOpen = sb.classList.contains('open');
+    sb.classList.remove('open');
     document.getElementById('drawerBackdrop').classList.remove('open');
     document.body.style.overflow = '';
+    if (wasOpen && drawerOpener && drawerOpener.focus && document.contains(drawerOpener)) drawerOpener.focus();
+    drawerOpener = null;
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab' || !document.querySelector('.sidebar').classList.contains('open') || window.innerWidth >= 1100) return;
+    var f = drawerFocusables();
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  (function() { // swipe left to close
+    var sb = document.querySelector('.sidebar'), x0 = null, y0 = null;
+    sb.addEventListener('touchstart', function(e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    sb.addEventListener('touchend', function(e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      x0 = null;
+      if (dx < -60 && Math.abs(dx) > Math.abs(dy) * 1.5) closeDrawer();
+    }, { passive: true });
+  })();
+
+  // ---------------- calendar day state (today / past) ----------------
+  function markDays() {
+    var t = todayKey(new Date());
+    document.querySelectorAll('.cal-day').forEach(function(row) {
+      var d = row.id.replace('day-', '');
+      row.classList.toggle('is-today', d === t);
+      row.classList.toggle('is-past', d < t);
+    });
+  }
+
+  // ---------------- mobile mini header (current month) ----------------
+  function updateMiniHeader() {
+    var mh = document.getElementById('miniHeader'), heads = document.querySelectorAll('.cal-month-header'), cur = null;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top <= 60) cur = heads[i]; else break;
+    }
+    var last = document.querySelector('.cal-agenda').lastElementChild;
+    var inCal = cur && last && last.getBoundingClientRect().bottom > 60;
+    mh.hidden = !inCal;
+    if (inCal) document.getElementById('miniMonth').textContent = cur.textContent;
+  }
+
+  // ---------------- bottom-nav state ----------------
+  function updateNavState() {
+    var q = document.getElementById('searchBox').value.trim();
+    document.getElementById('navSearch').classList.toggle('has-badge', !!q);
+  }
+  function initTodayNav() {
+    var row = document.querySelector('.cal-day.is-today'), btn = document.getElementById('navToday');
+    if (!row || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(en) { btn.classList.toggle('active', en[0].isIntersecting); }, { threshold: 0.3 }).observe(row);
   }
 
   var ACTIONS = {
@@ -315,11 +382,17 @@
   document.getElementById('searchClearBtn').addEventListener('click', clearSearchBox);
   window.addEventListener('scroll', function() {
     document.getElementById('backToTop').classList.toggle('show', window.scrollY > 600);
+    if (!miniTick) { miniTick = true; requestAnimationFrame(function() { miniTick = false; updateMiniHeader(); }); }
   });
+  var miniTick = false;
   window.addEventListener('resize', debounce(function() { if (window.innerWidth >= 1100) closeDrawer(); }, 200));
 
   // ---------------- init ----------------
   buildSearchIndex();
+  markDays();
+  initTodayNav();
+  updateMiniHeader();
+  document.addEventListener('visibilitychange', function() { if (!document.hidden) { markDays(); refreshTodayAndNextUp(); } });
   initReadingCheckboxes();
   updateEssayCountdown();
   setInterval(updateEssayCountdown, 60000);

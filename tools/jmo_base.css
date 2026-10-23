@@ -7,7 +7,7 @@
     --bg: #f5f6f8;
     --card-bg: #ffffff;
     --text: #1c2530;
-    --muted: #6b7688;
+    --muted: #596478;
     --border: #e2e5ea;
     --link: #1a56b8;
     --supp: #8a6d00;
@@ -373,12 +373,12 @@
     color: var(--text);
   }
   .card-meta-line {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--muted);
     font-weight: 500;
   }
   .card-block-label {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -422,7 +422,7 @@
   }
   .epigraph footer {
     margin-top: 4px;
-    font-size: 0.74rem;
+    font-size: 0.75rem;
     color: var(--muted);
     font-style: normal;
     letter-spacing: 0.1px;
@@ -436,7 +436,7 @@
     align-items: center;
     gap: 7px;
     margin: 0 0 8px;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.8px;
@@ -510,8 +510,8 @@
     font-weight: 700;
   }
   .read-toggle {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -539,7 +539,7 @@
   li.cite .plain { color: var(--text); }
   .muted-note { color: var(--muted); font-style: italic; font-size: 0.88rem; margin: 0; }
   .supp-label {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.6px;
@@ -681,7 +681,7 @@
     padding: 12px 14px;
   }
   .mod-name { font-weight: 700; font-size: 0.88rem; color: var(--navy-text); font-family: var(--serif); }
-  .mod-role { font-size: 0.74rem; color: var(--muted); margin: 2px 0 6px; }
+  .mod-role { font-size: 0.75rem; color: var(--muted); margin: 2px 0 6px; }
   .mod-contact { font-size: 0.78rem; color: var(--text); line-height: 1.5; }
   .mod-contact a { color: var(--link); text-decoration: none; }
   .sn-notes-list { margin-top: 4px; }
@@ -695,7 +695,7 @@
     border-bottom: 1px solid var(--border);
   }
   .research-panel-title {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.4px;
@@ -709,7 +709,7 @@
   }
   .hero-today-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .hero-today-label {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -755,7 +755,7 @@
     padding: 10px 12px;
     margin-bottom: 14px;
     line-height: 1.4;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
   .research-countdown .rc-label {
     display: block;
@@ -786,7 +786,7 @@
     font-weight: 600;
     color: var(--muted);
     font-family: var(--sans);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.2px;
   }
@@ -799,7 +799,7 @@
   .hw-ribbon {
     display: inline-flex;
     align-items: center;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -812,7 +812,7 @@
   .tag-pill {
     display: inline-flex;
     align-items: center;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: #fff;
     padding: 2px 8px;
@@ -846,6 +846,10 @@
     padding-bottom: 8px;
     border-bottom: 2px solid var(--gold);
     scroll-margin-top: 76px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
   }
   .cal-month-header:first-of-type { margin-top: 6px; }
   .cal-day {
@@ -898,12 +902,12 @@
   }
   button.cal-item:hover { box-shadow: 0 2px 10px rgba(16,24,40,0.1); }
   .cal-item-continuation { border-left-style: dashed; opacity: 0.92; }
-  .cal-item-time { font-size: 0.74rem; font-weight: 700; color: var(--muted); flex-shrink: 0; min-width: 46px; }
+  .cal-item-time { font-size: 0.75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; min-width: 46px; }
   .cal-item-main { color: var(--text); line-height: 1.4; }
   .cal-item-code { font-weight: 700; color: var(--navy-text); font-family: var(--serif); }
   .cal-item-format { color: var(--muted); font-size: 0.82rem; }
   .cal-guest, .cal-sn-flag, .cal-tag {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 700;
     padding: 2px 8px;
     border-radius: 999px;
@@ -1016,7 +1020,7 @@
   .mu-ribbon {
     display: inline-flex;
     align-items: center;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -1073,7 +1077,7 @@
   .course-update-panel .mu-subhead { border-top-color: #f3a35c; }
 
   .cal-updated-flag {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -1153,7 +1157,7 @@
       border: none;
       color: var(--muted);
       font-family: var(--sans);
-      font-size: 0.66rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.2px;
       cursor: pointer;
@@ -1163,8 +1167,9 @@
     .bottom-nav button:active { color: var(--navy-text); }
     .bottom-nav button.active { color: var(--gold); }
     .page-layout { padding-bottom: 110px; }
-    .next-up-bar { bottom: 58px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0)); }
-    .back-to-top { bottom: 116px; }
+    .next-up-bar { bottom: calc(58px + env(safe-area-inset-bottom, 0)); }
+    .back-to-top { bottom: calc(124px + env(safe-area-inset-bottom, 0)); }
+    .cal-month-header { position: static; }
   }
 
   @media (max-width: 720px) {
@@ -1205,7 +1210,7 @@
     .session-card summary .title { font-size: 0.9rem; }
     .badges { justify-content: flex-start; }
     .card-body { padding: 14px 16px 18px; }
-    .card-block-label { font-size: 0.62rem; }
+    .card-block-label { font-size: 0.75rem; }
 
     .cal-item {
       padding: 8px 10px;
@@ -1215,16 +1220,16 @@
     .cal-item-time { min-width: 0; }
     .cal-item-code { font-size: 0.85rem; }
 
-    .subsection h4 { font-size: 0.68rem; }
+    .subsection h4 { font-size: 0.75rem; }
     .subsection p, ul.plain-list, li.cite { font-size: 0.86rem; }
 
-    .back-to-top { width: 44px; height: 44px; bottom: 116px; right: 16px; font-size: 1rem; }
+    .back-to-top { width: 44px; height: 44px; bottom: calc(124px + env(safe-area-inset-bottom, 0)); right: 16px; font-size: 1rem; }
 
-    footer.page-footer { font-size: 0.74rem; padding: 24px 16px 40px; }
+    footer.page-footer { font-size: 0.75rem; padding: 24px 16px 40px; }
   }
 
   @media (max-width: 420px) {
     .sidebar-title { font-size: 1rem; }
     .cal-item-main { font-size: 0.82rem; }
-    .bottom-nav button { font-size: 0.6rem; }
+    .bottom-nav button { font-size: 0.7rem; }
   }

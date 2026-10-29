@@ -274,3 +274,48 @@ def readings_page():
             f'<nav>{toc}</nav>{body}</body></html>')
 (ROOT / 'readings.html').write_text(readings_page(), encoding='utf-8')
 print('wrote readings.html')
+
+
+# ---- command.html: "Command Room" visual edition (same data, same behaviour, new look) ----
+import sys
+sys.path.insert(0, str(T))
+import art
+
+def command_page():
+    cal = calendar_html()
+    for c in ORDER:  # drop a hero map at the top of each case card body
+        tag = f'id="card-{c}" data-code="{c}">'
+        head = cal.index(tag)
+        body = cal.index('<div class="card-body">', head) + len('<div class="card-body">')
+        cal = cal[:body] + art.hero_html(c, code(c)) + cal[body:]
+    tl = art.timeline_html(DAYS, ORDER, case_days, SHORT, code, fmt)
+    first, last = list(DAYS)[0], list(DAYS)[-1]
+    rose = ('<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="100" cy="100" r="92"/>'
+            '<circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="8" fill="currentColor"/>'
+            '<path d="M100 4 112 88 196 100 112 112 100 196 88 112 4 100 88 88Z" fill="currentColor" fill-opacity=".5"/>'
+            '<path d="M32 32 92 92M168 32 108 92M32 168 92 108M168 168 108 108"/><path d="M100 4V-2M100 196v6M4 100H-2M196 100h6"/></svg>')
+    hero = (
+        '<header class="cmd-hero"><svg class="cmd-hero-map" viewBox="-120 -78 270 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'
+        '<use href="#land" class="land"/><use href="#inland" class="inland"/></svg><div class="cmd-hero-grid"></div>'
+        f'<div class="cmd-compass" aria-hidden="true">{rose}</div>'
+        '<div class="cmd-hero-inner"><div><p class="cmd-kicker">Naval War College &middot; Winter 2026&ndash;27</p>'
+        '<h1 class="cmd-title">Strategy &amp; <em>Policy</em></h1>'
+        f'<p class="cmd-sub">{fmt(first)} &ndash; {fmt(last)} &middot; eleven cases, one continuous argument about power, war and the order that follows.</p>'
+        '<div class="cmd-rule"></div></div>'
+        '<div class="cmd-stats">'
+        '<div class="cmd-stat"><b id="cmdDay">&ndash;</b><span id="cmdDayLbl">Day</span><small id="cmdDaySub"></small></div>'
+        '<div class="cmd-stat"><b id="cmdCase">&ndash;</b><span id="cmdCaseLbl">Case</span><small id="cmdCaseSub"></small></div>'
+        '<div class="cmd-stat"><b id="cmdEssay">&ndash;</b><span id="cmdEssayLbl">Essay</span><small id="cmdEssaySub"></small></div>'
+        '<div class="cmd-progress" aria-hidden="true"><i id="cmdBar"></i></div></div></div></header>')
+    s = shell.replace('<title>Strategy &amp; Policy — Winter 2026–27</title>', '<title>Strategy &amp; Policy — Command Room</title>')
+    s = s.replace('<body>\n', '<body>\n' + art.defs_svg() + '\n', 1)
+    s = s.replace('<div class="hero-today"', hero + '\n<div class="hero-today"', 1)
+    ccss = css + (T / 'command.css').read_text(encoding='utf-8')
+    cjs = js + '\n' + (T / 'command.js').read_text(encoding='utf-8')
+    return (s.replace('{{CSS}}', ccss).replace('{{JS}}', cjs).replace('{{CASE_INDEX}}', case_index_html())
+             .replace('{{CALENDAR}}', cal).replace('{{REFERENCE}}', tl + reference_html())
+             .replace('{{TOTAL_CASES}}', str(len(ORDER))))
+
+cmd = command_page()
+(ROOT / 'command.html').write_text(cmd, encoding='utf-8')
+print('wrote command.html', len(cmd) // 1024, 'KB')

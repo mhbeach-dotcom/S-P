@@ -288,6 +288,8 @@ def command_page():
         head = cal.index(tag)
         body = cal.index('<div class="card-body">', head) + len('<div class="card-body">')
         cal = cal[:body] + art.hero_html(c, code(c)) + cal[body:]
+        summ = cal.index('<summary>', head) + len('<summary>')
+        cal = cal[:summ] + art.scene_html(c) + cal[summ:]
     tl = art.timeline_html(DAYS, ORDER, case_days, SHORT, code, fmt)
     first, last = list(DAYS)[0], list(DAYS)[-1]
     rose = ('<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="100" cy="100" r="92"/>'
@@ -306,7 +308,7 @@ def command_page():
         '<div class="cmd-stat"><b id="cmdDay">&ndash;</b><span id="cmdDayLbl">Day</span><small id="cmdDaySub"></small></div>'
         '<div class="cmd-stat"><b id="cmdCase">&ndash;</b><span id="cmdCaseLbl">Case</span><small id="cmdCaseSub"></small></div>'
         '<div class="cmd-stat"><b id="cmdEssay">&ndash;</b><span id="cmdEssayLbl">Essay</span><small id="cmdEssaySub"></small></div>'
-        '<div class="cmd-progress" aria-hidden="true"><i id="cmdBar"></i></div></div></div></header>')
+        '<div class="cmd-progress" aria-hidden="true"><i id="cmdBar"></i></div></div></div>' + art.frontispiece_html() + '</header>')
     s = shell.replace('<title>Strategy &amp; Policy — Winter 2026–27</title>', '<title>Strategy &amp; Policy — Command Room</title>')
     s = s.replace('<body>\n', '<body>\n' + art.defs_svg() + '\n', 1)
     s = s.replace('<div class="hero-today"', hero + '\n<div class="hero-today"', 1)

@@ -48,7 +48,7 @@ def defs_svg():
     land = ''.join(_poly(p) for p in LAND.values())
     water = ''.join(_poly(p) for p in WATER.values())
     return (f'<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
-            f'<path id="land" vector-effect="non-scaling-stroke" d="{land}"/><path id="inland" vector-effect="non-scaling-stroke" d="{water}"/></defs></svg>')
+            f'<path id="land" vector-effect="non-scaling-stroke" d="{land}"/><path id="inland" vector-effect="non-scaling-stroke" d="{water}"/>{sky_defs()}</defs></svg>')
 
 # ---- per-case map spec: centre lon/lat, lon span, era label, caption, glyph, markers ----
 # marker: (name, lon, lat, side) side 'r' or 'l'
@@ -192,7 +192,7 @@ def timeline_html(days, order, case_days, short, code, fmt):
             g.append(f'<circle class="tl-mk {cls}" cx="{cx}" cy="{MK_Y + 14}" r="5" data-jump-date="{d}" tabindex="0" role="button" '
                      f'aria-label="{html.escape(lab)} {fmt(d)}"><title>{html.escape(lab)} · {fmt(d)}'
                      f'{" · " + html.escape(t) if kk in ("deadline", "event", "holiday") else ""}</title></circle>')
-    needle = f'<g id="tlNeedle" hidden><path d="M0 {TOP - 4}V{H}"/><text y="{TOP - 8}">Today</text></g>'
+    needle = f'<g id="tlNeedle" display="none"><path d="M0 {TOP - 4}V{H}"/><text y="{TOP - 8}">Today</text></g>'
     legend = ('<div class="tl-legend"><span class="mk-hol">Holiday</span><span class="mk-el">Electives</span><span class="mk-pmw">Other course</span>'
               '<span class="mk-ref">Reflection</span><span class="mk-dl">Essay</span><span class="mk-ev">Event</span></div>')
     svg = (f'<svg id="tlSvg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" data-start="{start.isoformat()}" data-days="{n}" data-px="{PX}" '
@@ -203,3 +203,95 @@ def timeline_html(days, order, case_days, short, code, fmt):
             '<button type="button" data-tl="now">Today</button></div></div>'
             f'<div class="tl-scroll" id="tlScroll" tabindex="0" aria-label="Scrollable term timeline">{svg}</div>{legend}'
             '<p class="tl-hint">Tap a band to open that case; tap a dot to jump to the day. Drag or scroll sideways to move along the term.</p></section>')
+
+
+# ---- illustrated scenes (original SVG artwork; no external images) ----
+SKIES = {
+ 'dawn':  ('#1b3a63', '#e8a05a'), 'dusk': ('#2a2f5a', '#e0764a'), 'night': ('#050d1c', '#1d4274'),
+ 'day':   ('#4f86bd', '#d8e6f1'), 'storm': ('#222a36', '#8b97a6'), 'fire': ('#26090c', '#cf6a2a'),
+}
+
+def sky_defs():
+    g = ''.join(f'<linearGradient id="sky-{k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{a}"/><stop offset="1" stop-color="{b}"/></linearGradient>'
+                for k, (a, b) in SKIES.items())
+    g += '<linearGradient id="sea-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17375f"/><stop offset="1" stop-color="#071a33"/></linearGradient>'
+    return g
+
+def _waves(y, n=21, amp=4):
+    return f'<path class="sc-wave" d="M-10 {y}' + f' q10 -{amp} 20 0 t20 0' * n + '"/>'
+def _sea(y=88): return f'<rect x="0" y="{y}" width="400" height="{120 - y}" fill="url(#sea-g)"/>' + _waves(y + 4) + _waves(y + 12, amp=3)
+def _sun(x, y, r=16): return f'<circle cx="{x}" cy="{y}" r="{r * 2.2}" class="sc-glow"/><circle cx="{x}" cy="{y}" r="{r}" class="sc-sun"/>'
+def _stars(pts): return ''.join(f'<circle cx="{x}" cy="{y}" r="{r}" class="sc-star"/>' for x, y, r in pts)
+def _g(x, y, s, inner, rot=0): return f'<g transform="translate({x} {y}) rotate({rot}) scale({s})">{inner}</g>'
+
+SAIL = ('<path d="M-42 0H42L33 10H-35Z"/><path d="M-20 0V-40M0 0V-48M22 0V-38" class="sc-line"/>'
+        + ''.join(f'<path d="M{m-14} {-h*.92}H{m+14}L{m+11} {-h*.48}H{m-11}Z"/><path d="M{m-16} {-h*.42}H{m+16}L{m+14} -5H{m-14}Z"/>' for m, h in ((-20, 40), (0, 48), (22, 38)))
+        + '<path d="M42 0 54 -6" class="sc-line"/>')
+TRIREME = ('<path d="M-38 2Q0 14 38 2L46 -4 40 -2 36 -6H-34L-40 -2Z"/><path d="M-6 -6V-36" class="sc-line"/><path d="M-26 -34H14L12 -12H-24Z" class="sc-sail"/>'
+           '<path d="M-30 2 -36 12M-18 5-22 14M-6 6-8 15M6 6 8 15M18 5 22 14M30 2 36 12" class="sc-line"/><path d="M38 2 52 8" class="sc-line"/>')
+DREAD = ('<path d="M-60 0H60L52 9H-52Z"/><rect x="-30" y="-8" width="60" height="8"/><rect x="-14" y="-20" width="12" height="12"/><rect x="6" y="-16" width="9" height="8"/>'
+         '<rect x="-22" y="-30" width="5" height="22"/><rect x="-6" y="-34" width="5" height="26"/><path d="M-4 -34V-52M20 -16V-40" class="sc-line"/>'
+         '<path d="M-52 -5 -66 -9M48 -5 62 -9M-40 -5-52 -2" class="sc-line"/><rect x="-46" y="-8" width="10" height="8"/><rect x="34" y="-8" width="10" height="8"/>')
+CARRIER = '<path d="M-70 0H72L64 9H-60Z"/><rect x="-66" y="-5" width="136" height="5"/><rect x="20" y="-18" width="12" height="13"/><path d="M26 -18V-26" class="sc-line"/>'
+CONTAINER = ('<path d="M-70 0H70L62 10H-60Z"/><rect x="-62" y="-12" width="124" height="12" class="sc-mid"/>'
+             + ''.join(f'<rect x="{-60 + i * 10}" y="{-22 + (i % 3) * -0}" width="9" height="{10}" class="sc-box{i % 3}"/>' for i in range(0, 12))
+             + '<rect x="-62" y="-22" width="124" height="0"/><rect x="46" y="-28" width="12" height="28"/>')
+PLANE = GLYPH['plane']
+MISSILE = GLYPH['missile']
+
+def _plane(x, y, s, rot=0): return _g(x, y, s, PLANE.replace('class="hole"', ''), rot)
+
+SCENES = {}
+SCENES['0'] = ('dawn', _sun(300, 80, 15) + _sea(88)
+    + ''.join(f'<path d="M300 80 L{300 + 160 * __import__("math").cos(a)} {80 - 160 * __import__("math").sin(a)}" class="sc-ray"/>' for a in (0.25, 0.5, 0.75, 1.0, 1.3, 1.6, 1.9, 2.3, 2.7))
+    + _g(300, 38, 0.9, GLYPH['compass'], 0).replace('<g ', '<g class="sc-gold" '))
+SCENES['I'] = ('dusk', _sun(90, 70, 14)
+    + '<path d="M0 88 0 66 40 76 90 60 150 78 210 62 270 80 330 66 400 74V120H0Z" class="sc-far"/><path d="M0 100 70 84 140 96 230 82 320 96 400 86V120H0Z" class="sc-near"/>'
+    + ''.join(f'<path d="M{x} 96V{y}" class="sc-line"/><path d="M{x} {y}h14l-4 4 4 4h-14" class="sc-gold"/>' for x, y in ((250, 64), (290, 70), (330, 66)))
+    + '<path d="M180 94 196 86 204 88 222 80" class="sc-line"/><circle cx="204" cy="87" r="3.4"/>')
+SCENES['II'] = ('dusk', _sun(310, 74, 18) + '<path d="M0 90 60 78 130 70 200 74 270 66 400 92V120H0Z" class="sc-far"/>'
+    + '<path d="M40 90 70 62H200L230 90Z" class="sc-near"/><path d="M62 62H208L135 44Z" class="sc-temple"/><rect x="66" y="60" width="136" height="4" class="sc-temple"/>'
+    + ''.join(f'<rect x="{74 + i * 17}" y="64" width="7" height="24" class="sc-temple"/>' for i in range(8))
+    + _sea(96) + _g(330, 104, 0.9, TRIREME))
+SCENES['III'] = ('storm', _sun(70, 48, 10) + _sea(86) + _g(230, 92, 1.25, SAIL) + _g(110, 90, 0.7, SAIL)
+    + '<path d="M240 50q14-10 30-6t26-8" class="sc-smoke"/><circle cx="298" cy="36" r="4" class="sc-fire"/><circle cx="312" cy="30" r="2" class="sc-fire"/>')
+SCENES['IV'] = ('storm', '<path d="M0 86H400" class="sc-line"/>' + _sea(86) + _g(240, 92, 1.1, DREAD) + _g(80, 94, 0.55, DREAD)
+    + '<path d="M40 30 10 86M60 30 120 86" class="sc-beam"/><circle cx="330" cy="82" r="4"/><path d="M330 82V70h8" class="sc-line"/>'
+    + '<path d="M200 36q10 -8 20 0t20 -2" class="sc-smoke"/>')
+SCENES['V'] = ('dusk', _sun(60, 84, 16) + '<path d="M0 92 40 84 90 90 150 80 200 90 260 82 330 92 400 84V120H0Z" class="sc-far"/>'
+    + '<path d="M0 104 80 96 170 106 270 96 400 106V120H0Z" class="sc-near"/>'
+    + _g(240, 40, 1.1, '<path d="M-24 8Q-8 -10 14 -8Q4 0 -4 4L8 14Q-8 16 -24 8Z" class="sc-gold"/><path d="M14 -8 22 -12" class="sc-line"/>')
+    + _plane(330, 30, 0.35, -20) + _plane(360, 46, 0.3, -20) + _plane(300, 56, 0.28, -20))
+SCENES['VI'] = ('night', _stars([(30, 14, 1), (90, 26, .8), (170, 12, 1), (330, 20, 1.1), (380, 40, .8)]) + '<path d="M60 90 90 20M110 90 80 20M300 90 330 18" class="sc-beam"/>'
+    + _sea(90) + _g(250, 94, 1.2, CARRIER) + _plane(130, 44, 0.5, 70) + _plane(180, 30, 0.42, 70) + _plane(100, 62, 0.4, 70) + _plane(350, 50, 0.36, 70))
+SCENES['VII'] = ('dawn', _sun(330, 72, 12) + '<path d="M0 90H400V120H0Z" class="sc-near"/><path d="M0 92H400" class="sc-line"/>'
+    + ''.join(f'<path d="M{x} 92V76" class="sc-line"/>' for x in range(10, 400, 24)) + '<path d="M0 78H400M0 84H400" class="sc-wire"/>'
+    + _plane(130, 44, 0.8, 90)
+    + '<circle cx="300" cy="62" r="10" class="sc-fire"/><circle cx="288" cy="68" r="8" class="sc-fire"/><circle cx="312" cy="68" r="8" class="sc-fire"/><path d="M296 90 300 70 304 90Z" class="sc-fire"/>')
+SCENES['VIII'] = ('night', _stars([(20, 16, 1), (80, 40, 1), (150, 12, .8), (250, 24, 1), (370, 18, 1.2), (40, 70, .8)])
+    + '<ellipse cx="200" cy="52" rx="170" ry="26" class="sc-orbit"/><circle cx="148" cy="30" r="7" class="sc-gold"/><path d="M148 30 130 20M148 30 166 20M148 30 130 40M148 30 166 40" class="sc-line"/>'
+    + '<path d="M0 100 100 92 220 102 330 90 400 98V120H0Z" class="sc-near"/>'
+    + ''.join(f'<path d="M{x} 100V{y}" class="sc-line"/><path d="M{x} {y} q-14 -2 -18 8M{x} {y} q14 -2 18 8M{x} {y} q0 -10 0 -12" class="sc-line"/>' for x, y in ((40, 72), (360, 68)))
+    + _g(300, 52, 0.7, MISSILE, 35).replace('<g ', '<g class="sc-gold" '))
+SCENES['IX'] = ('fire', _sun(330, 78, 14)
+    + ''.join(f'<rect x="{x}" y="{y}" width="24" height="9" class="sc-brick"/>' for y in range(40, 112, 9) for x in range(-12 + (12 if (y // 9) % 2 else 0), 400, 24) if not (150 < x < 230 and y < 100))
+    + '<path d="M150 112 160 70 180 82 200 54 220 78 240 112Z" class="sc-gap"/><path d="M190 108 196 80 206 90 212 70 218 108Z" class="sc-gold"/>'
+    + '<path d="M300 12 340 90M340 12 300 90" class="sc-beam"/>')
+SCENES['X'] = ('dusk', _sun(60, 80, 14) + '<path d="M0 100H400V120H0Z" class="sc-near"/>'
+    + ''.join(f'<rect x="{x}" y="{100 - h}" width="{w}" height="{h}" class="sc-near"/>' for x, h, w in ((120, 36, 14), (136, 56, 12), (150, 30, 16), (168, 70, 10), (180, 44, 14), (196, 28, 18), (216, 62, 12), (230, 38, 14)))
+    + '<path d="M300 100V76M280 76q20 -20 40 0Z" class="sc-near"/><path d="M300 76 320 60" class="sc-line"/><circle cx="322" cy="58" r="3" class="sc-gold"/>'
+    + _plane(290, 34, 0.32, 80) + _plane(340, 24, 0.26, 80) + '<path d="M80 40h40M100 40v8M92 48h16" class="sc-line"/>')
+SCENES['XI'] = ('day', _sun(340, 30, 10) + _sea(86) + _g(180, 94, 1.1, CONTAINER)
+    + '<path d="M60 20 340 20" class="sc-wire"/>' + ''.join(f'<circle cx="{x}" cy="{y}" r="2.6" class="sc-gold"/>' for x, y in ((90, 18), (150, 26), (230, 14), (300, 24)))
+    + '<path d="M90 18 150 26 230 14 300 24" class="sc-wire"/><path d="M30 86V58M24 58h12l-6-10Z" class="sc-line"/>')
+
+def scene_html(c):
+    sky, inner = SCENES[c]
+    return (f'<svg class="card-art" viewBox="0 0 400 120" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">'
+            f'<rect width="400" height="120" fill="url(#sky-{sky})"/>{inner}</svg>')
+
+def frontispiece_html():
+    return ('<div class="cmd-sea" aria-hidden="true"><svg viewBox="0 0 800 70" preserveAspectRatio="none">'
+            '<g class="cmd-sea-a">' + _waves(40, n=41, amp=5).replace('class="sc-wave"', 'class="sc-wave2"') + '</g>'
+            '<g class="cmd-sea-b">' + _waves(52, n=41, amp=4).replace('class="sc-wave"', 'class="sc-wave3"') + '</g></svg>'
+            '<div class="cmd-ship"><svg viewBox="-70 -60 140 70">' + f'<g class="sc-silhouette">{SAIL}</g></svg></div></div>')

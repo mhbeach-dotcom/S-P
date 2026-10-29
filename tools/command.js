@@ -70,8 +70,8 @@
   }
   function placeNeedle() {
     var needle = document.getElementById('tlNeedle'), off = dayDiff(start, today);
-    if (off < 0 || off >= total) { needle.hidden = true; return; }
-    needle.removeAttribute('hidden');
+    if (off < 0 || off >= total) { needle.setAttribute('display', 'none'); return; }
+    needle.removeAttribute('display');
     needle.setAttribute('transform', 'translate(' + (off * px + px / 2) + ' 0)');
   }
   function toToday(smooth) {

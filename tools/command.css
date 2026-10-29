@@ -154,3 +154,49 @@ body {
   .cmd-progress i { transition: none; }
 }
 @media print { .cmd-hero, .timeline { display: none !important; } .case-hero { display: none !important; } }
+
+/* ---------- illustrated scenes ---------- */
+.card-art { position: absolute; top: 0; right: 0; height: 100%; width: 52%; z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 42%); mask-image: linear-gradient(90deg, transparent 0, #000 42%); }
+#calAgenda > .session-card > summary { position: relative; overflow: hidden; min-height: 78px; }
+#calAgenda > .session-card > summary > *:not(.card-art) { position: relative; z-index: 1; }
+#calAgenda > .session-card > summary .badges { display: none; }
+.card-art svg, svg.card-art { display: block; }
+svg.card-art { fill: #071a33; }
+.card-art .sc-wave { fill: none; stroke: rgba(255,255,255,0.28); stroke-width: 1; }
+.card-art .sc-wave2, .cmd-sea .sc-wave2 { fill: none; stroke: rgba(228,199,102,0.55); stroke-width: 1.4; }
+.cmd-sea .sc-wave3 { fill: none; stroke: rgba(143,180,232,0.5); stroke-width: 1.2; }
+.card-art .sc-line { fill: none; stroke: #071a33; stroke-width: 1.8; stroke-linecap: round; }
+.card-art .sc-wire { fill: none; stroke: #071a33; stroke-width: 1; opacity: .8; }
+.card-art .sc-sun { fill: #ffe9a8; } .card-art .sc-glow { fill: rgba(255,226,150,0.28); }
+.card-art .sc-star { fill: #fff; opacity: .85; }
+.card-art .sc-ray { stroke: rgba(255,230,160,0.35); stroke-width: 1.2; fill: none; }
+.card-art .sc-gold { fill: #e4c766; stroke: none; }
+.card-art .sc-far { fill: #3a4a6a; opacity: .75; } .card-art .sc-near { fill: #0b1a30; }
+.card-art .sc-sail { fill: #e9dfc4; }
+.card-art .sc-smoke { fill: none; stroke: rgba(230,230,230,0.5); stroke-width: 3; stroke-linecap: round; }
+.card-art .sc-fire { fill: #ff9a3c; }
+.card-art .sc-beam { stroke: rgba(255,244,200,0.45); stroke-width: 4; fill: none; stroke-linecap: round; }
+.card-art .sc-orbit { fill: none; stroke: rgba(228,199,102,0.55); stroke-width: 1; stroke-dasharray: 3 3; }
+.card-art .sc-brick { fill: #8a3a22; stroke: #5b2415; stroke-width: .8; }
+.card-art .sc-gap { fill: #ff8a2a; opacity: .9; }
+.card-art .sc-mid { fill: #1d3452; } .card-art .sc-box0 { fill: #c0392b; } .card-art .sc-box1 { fill: #2a6f97; } .card-art .sc-box2 { fill: #e4a23a; }
+.card-art .hole { fill: #fff; } .card-art .flame { fill: #ff9a3c; }
+
+/* header sea + sailing ship */
+.cmd-sea { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; pointer-events: none; overflow: hidden; }
+.cmd-sea > svg { position: absolute; left: 0; bottom: 0; width: 200%; height: 70px; }
+.cmd-sea-a { animation: waveA 14s linear infinite; } .cmd-sea-b { animation: waveA 22s linear infinite reverse; }
+@keyframes waveA { to { transform: translateX(-400px); } }
+.cmd-ship { position: absolute; bottom: 14px; left: 0; width: 120px; animation: sail 60s linear infinite; }
+.cmd-ship svg { width: 100%; display: block; } .cmd-ship .sc-silhouette { fill: rgba(246,241,226,0.92); } .cmd-ship .sc-line { stroke: rgba(246,241,226,0.92); stroke-width: 2; fill: none; }
+.cmd-ship .sc-sail { fill: #f6f1e2; }
+@keyframes sail { from { transform: translateX(-140px) rotate(-1deg); } to { transform: translateX(calc(100vw + 40px)) rotate(1deg); } }
+.cmd-hero-inner { padding-bottom: 52px; }
+
+@media (max-width: 899px) {
+  .card-art { width: 100%; opacity: .38; -webkit-mask-image: linear-gradient(90deg, transparent 15%, #000 85%); mask-image: linear-gradient(90deg, transparent 15%, #000 85%); }
+}
+@media (prefers-reduced-motion: reduce) { .cmd-sea-a, .cmd-sea-b, .cmd-ship { animation: none !important; } .cmd-ship { left: 55%; } }
+
+.card-art .sc-temple { fill: #e9dcb4; }
